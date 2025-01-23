@@ -11,7 +11,7 @@ import tailwindPlugin from './plugins/tailwind-config.cjs';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Antitoken',
+  title: 'Antitoken Docs',
   tagline: 'Quantum-inspired Token Pair for DeSci & Prediction Markets',
   favicon: 'img/favicon.ico',
 
@@ -69,7 +69,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/antitoken_preview_image.jpg',
+      image: 'img/antitoken_preview_image.png',
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: true,
