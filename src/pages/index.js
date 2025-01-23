@@ -10,7 +10,7 @@ function HomepageHeader() {
   return (
     <header className={clsx('bg-dark', 'twp', styles.heroBanner)}>
       <div className="container flex flex-col items-center">
-        <img className="object-cover h-64" src="/img/distribution.jpeg" />
+        <img className="object-cover h-64 rounded" src="/img/distribution.jpeg" />
 
         <div className='align-left'>
           <Heading as="h1" className="hero__title font-medium mt-12">
@@ -77,7 +77,7 @@ export default function Home() {
   return (
     <Layout
       title={`Documentation`}
-      description="Description will go into a meta tag in <head />">
+      description="Quantum-inspired Token Pair for DeSci & Prediction Markets">
       <HomepageHeader />
       <QuickLinks />
     </Layout>
