@@ -39,14 +39,3 @@
     @apply hover:no-underline hover:text-white;
   }
 }
-
-@media (max-width: 996px) {
-    .navbar__item {
-      display: flex !important;
-      align-items: center;
-    }
-
-    .navbar__toggle {
-        display: none !important;
-    }
-}
