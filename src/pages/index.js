@@ -19,7 +19,7 @@ function HomepageHeader() {
           <Heading as="h1" className="hero__title font-medium mt-12 font-ocr">
             {siteConfig.title}
           </Heading>
-          <p className="hero__subtitle font-sfmono">{siteConfig.tagline}</p>
+          <p className="hero__subtitle font-ocr">{siteConfig.tagline}</p>
 
           <div className="flex gap-4 mt-12">
             <a
