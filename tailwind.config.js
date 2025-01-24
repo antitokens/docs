@@ -16,7 +16,10 @@ module.exports = {
         'accent-secondary': '#00CC8E',
         'accent-orange': '#D66035',
       },
-
+      fontFamily: {
+        ocr: ["OCR A Std", "monospace"],
+        sfmono: ["SF Mono Round", "monospace"],
+      },
     },
   },
   plugins: [

@@ -9,6 +9,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "OCR A Std";
+  src: url("/fonts/OCR-A-Std.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Mono Round";
+  src: url("/fonts/SF-Mono-Round.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
