@@ -253,7 +253,7 @@ export const Equaliser = () => {
     <div className="w-full max-w-2xl p-4 border rounded-lg">
       <div className="mb-2">
         <h2 className="text-xl font-bold mb-4 text-center">
-          Collider Visualiser
+          Equaliser Visualiser
         </h2>
 
         <div className="mb-4">
