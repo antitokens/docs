@@ -68,17 +68,6 @@ i.e.
 
 In this formulation, `μ` captures the magnitude or size, while `σ` captures the confidence or certainty, of a user's prediction. This process is referred to as a 'collision'.
 
-<div id="playground"></div>
-
-<script>
-  document.getElementById("playground").innerHTML =`
-
-    <h4>Click the button to see the effect:</h4>
-    <button onclick="alert('Hello, World!')">Click Me!</button>
-
-  `; 
-</script>
-
 <Collider />
 
 ## 3. Closeness to Outcome
@@ -86,19 +75,19 @@ In this formulation, `μ` captures the magnitude or size, while `σ` captures th
 The overlap function `𝜪` plays central role in token redistribution following a prediction's finality. The overlap function is a measure of closeness of the prediction to any given truth. The overlap function is derived as follows:
 
 <pre>
-𝜪(𝞅<sub>u</sub>, 𝞅<sub>T</sub>) = ⨏ 𝞅<sub>u</sub>(𝛾)·𝞅<sub>T</sub>(𝛾)d𝛾
+𝜪(𝞅<sub>u</sub>, 𝞅<sub>T</sub>) =〈𝞅<sub>u</sub>(𝛾)·𝞅<sub>T</sub>(𝛾)〉
 </pre>
 
-where, <code>𝞅<sub>u</sub></code> is a user's prediction and <code>𝞅<sub>T</sub></code> is the truth distribution; `⨏` represents a finite integral over the entire range of possible outcomes. Lastly, the range of `𝜪` satifies `𝜪 ∈ [0, 1]` .
+where, <code>𝞅<sub>u</sub></code> is a user's prediction and <code>𝞅<sub>T</sub></code> is the truth distribution with mean <code>T<sub>μ</sub></code> and variance <code>T<sub>σ<sup>2</sup></sub></code>; `〈 〉` represents a finite integral over the entire range of possible outcomes. Lastly, the range of `𝜪` satifies `𝜪 ∈ [0, 1]` .
 
 <Equaliser />
 
 ### 3.1 Binary Outcomes
 
-If the truth is binary (a strict `Yes` or `No` ), then <code>𝞅<sub>T</sub></code> becomes a dirac-delta function, i.e. <code>𝞅<sub>T</sub> = 𝞭(𝛾<sub>T</sub></code>). Consequently, the overlap function reduces to:
+If the truth is binary (a strict `Yes` or `No` ), then <code>𝞅<sub>T</sub></code> becomes a dirac-delta function, i.e. <code>𝞅<sub>T</sub> = 𝞭(𝛾<sub>T</sub>)</code>. Consequently, the overlap function reduces to:
 
 <pre>
-𝜪<sub>b</sub>(𝞅<sub>u</sub>, 𝞅<sub>T</sub>) = ⨏ 𝞅<sub>u</sub>(𝛾)·𝞭(𝛾<sub>T</sub>)d𝛾 = 𝞅<sub>u</sub>(𝛾<sub>T</sub>).
+𝜪<sub>b</sub>(𝞅<sub>u</sub>, 𝞅<sub>T</sub>) =〈𝞅<sub>u</sub>(𝛾)·𝞭(𝛾<sub>T</sub>)d𝛾 = 𝞅<sub>u</sub>(𝛾<sub>T</sub>)〉
 </pre>
 
 In explicit form, the overlap calculation for each position to the closest binary outcome (a `Yes` or `No` outcome) is defined as:
@@ -169,7 +158,7 @@ Note that `⌊` is the floor-to-nearest-integer operator.
 
 In the binary case, we simply set <code>𝜪 = 𝜪(μ, σ)</code> as prescribed in section 3.1.
 
-## 5 Reward System
+## 5. Reward System
 
 The net gain or loss ( `𝚫` ) is calculated as the difference between the redistributed tokens and the initial deposit:
 
