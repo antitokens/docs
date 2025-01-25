@@ -4,6 +4,7 @@ title: Antitoken Yellowpaper
 sidebar_label: Antitoken
 description: Antitoken Prediction Framework for Continuous Outcomes
 ---
+import { Collider, Equaliser } from '@site/src/components/InteractiveScript'; 
 
 # Antitoken Collider: A Prediction Framework for Continuous Outcomes
 
@@ -65,7 +66,20 @@ i.e.
 σ = (𝛼 + 𝛽)/|𝛼 - 𝛽|, otherwise
 </pre>
 
-In this formulation, `μ` captures the magnitude or size, while `σ` captures the confidence or certainty, of a user's prediction.
+In this formulation, `μ` captures the magnitude or size, while `σ` captures the confidence or certainty, of a user's prediction. This process is referred to as a 'collision'.
+
+<div id="playground"></div>
+
+<script>
+  document.getElementById("playground").innerHTML =`
+
+    <h4>Click the button to see the effect:</h4>
+    <button onclick="alert('Hello, World!')">Click Me!</button>
+
+  `; 
+</script>
+
+<Collider />
 
 ## 3. Closeness to Outcome
 
@@ -76,6 +90,8 @@ The overlap function `𝜪` plays central role in token redistribution following
 </pre>
 
 where, <code>𝞅<sub>u</sub></code> is a user's prediction and <code>𝞅<sub>T</sub></code> is the truth distribution; `⨏` represents a finite integral over the entire range of possible outcomes. Lastly, the range of `𝜪` satifies `𝜪 ∈ [0, 1]` .
+
+<Equaliser />
 
 ### 3.1 Binary Outcomes
 
@@ -100,13 +116,13 @@ i.e.
 In order to avoid very small numbers, <code>𝜪<sub>b</sub>(μ, σ)</code> is transformed such that:
 
 <pre>
-𝜪(μ, σ) = 0, if 𝜪<sub>b</sub>(μ, σ) = 0,
+𝜪(μ, σ) = 0, if 𝜪<sub>b</sub>(μ, σ) = 0, 
 
-𝜪(μ, σ) = 1, if 𝜪<sub>b</sub>(μ, σ) = 1,
+𝜪(μ, σ) = 1, if 𝜪<sub>b</sub>(μ, σ) = 1, 
 
-𝜪(μ, σ) = 1/|log<sub>e</sub>(𝜪<sub>b</sub>(μ, σ))|, if 1 > 𝜪<sub>b</sub>(μ, σ) > 0, and
+𝜪(μ, σ) = |log<sub>e</sub>(𝜪<sub>b</sub>(μ, σ))|<sup>-1</sup>, if 1 > 𝜪<sub>b</sub>(μ, σ) > 0, and
 
-𝜪(μ, σ) = 1 - 1/|log<sub>e</sub>(𝜪<sub>b</sub>(μ, σ))|, if 𝜪<sub>b</sub>(μ, σ) < 0.
+𝜪(μ, σ) = 1 - |log<sub>e</sub>(𝜪<sub>b</sub>(μ, σ))|<sup>-1</sup>, if 𝜪<sub>b</sub>(μ, σ) < 0.
 </pre>
 
 where:
@@ -174,6 +190,7 @@ i = ⌊𝜪(μ, σ)/[𝜪(μ, σ)]<sub>max</sub>.
 </pre> 
 
 <!--
+
 ## 5. Some Examples
 
 ### 5.1 Prediction Markets
