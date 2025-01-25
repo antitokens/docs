@@ -75,11 +75,11 @@ The overlap function `𝜪` plays central role in token redistribution following
 𝜪(𝞅<sub>u</sub>, 𝞅<sub>T</sub>) = ⨏ 𝞅<sub>u</sub>(𝛾)·𝞅<sub>T</sub>(𝛾)d𝛾
 </pre>
 
-where, 𝞅<sub>u</sub> is a user's prediction and 𝞅<sub>T</sub> is the truth distribution; `⨏` represents a finite integral over the entire range of possible outcomes. Lastly, `𝜪 ∈ [0, 1]` .
+where, <code>𝞅<sub>u</sub></code> is a user's prediction and <code>𝞅<sub>T</sub></code> is the truth distribution; `⨏` represents a finite integral over the entire range of possible outcomes. Lastly, the range of `𝜪` satifies `𝜪 ∈ [0, 1]` .
 
-### 2.1 Binary Outcomes
+### 3.1 Binary Outcomes
 
-If the truth is binary (a strict `Yes` or `No` ), then 𝞅<sub>T</sub> becomes a dirac-delta function, i.e. 𝞅<sub>T</sub> = 𝞭(𝛾<sub>T</sub>). Consequently, the overlap function reduces to:
+If the truth is binary (a strict `Yes` or `No` ), then <code>𝞅<sub>T</sub></code> becomes a dirac-delta function, i.e. <code>𝞅<sub>T</sub> = 𝞭(𝛾<sub>T</sub></code>). Consequently, the overlap function reduces to:
 
 <pre>
 𝜪<sub>b</sub>(𝞅<sub>u</sub>, 𝞅<sub>T</sub>) = ⨏ 𝞅<sub>u</sub>(𝛾)·𝞭(𝛾<sub>T</sub>)d𝛾 = 𝞅<sub>u</sub>(𝛾<sub>T</sub>).
@@ -149,9 +149,13 @@ where
 
 Note that `⌊` is the floor-to-nearest-integer operator.
 
-### 4.1 Reward System
+### 4.1 Binary Case
 
-The net gain or loss ( `𝚫` ) is calculated as:
+In the binary case, we simply set <code>𝜪 = 𝜪(μ, σ)</code> as prescribed in section 3.1.
+
+## 5 Reward System
+
+The net gain or loss ( `𝚫` ) is calculated as the difference between the redistributed tokens and the initial deposit:
 
 <pre>
 𝚫<sub>[𝛼, 𝛽]</sub> = Γ(𝜪<sub>r, i</sub>)<sub>[𝛼, 𝛽]</sub> - [𝛼, 𝛽] = i/N × [𝛼<sub>r</sub>·𝛼<sub>TOTAL</sub>/Σ<sub>k<sub>i</sub></sub>𝛼<sub>r</sub>, 𝛽<sub>r</sub>·𝛽<sub>TOTAL</sub>/Σ<sub>k<sub>i</sub></sub>𝛽<sub>r</sub>] - [𝛼<sub>r</sub>, 𝛽<sub>r</sub>].
@@ -197,6 +201,6 @@ Upon prediction resolution with truth values `[0.6, 0.4]` , the equalisation fun
 </pre> 
 -->
 
-## Remarks
+## 6. Remarks
 
 The Antitoken Collider Protocol presents a novel approach to binary outcome markets, introducing mathematical rigor through its `$BARYON` - `$PHOTON` mechanics and equalisation function. Future development could explore multi-outcome markets and dynamic truth value adjustment mechanisms.
