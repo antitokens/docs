@@ -40,20 +40,26 @@ This program implements a decentralised prediction market using two competing to
 * Created per prediction market poll
 * Derived using PDA seeds: `['poll', pollCount]`
 * Contains poll metadata, deposits, and results:
-  + String fields: `title` (`256`),  `description` (`1000`), timestamps (`128`)
-  + Token tracking: `$ANTI`/`$PRO` balances (`16`)
-  + `deposits` vector (`1024`)
-  + Optional `equalisationResults` (`1024`)
+  + String fields: 
+    - `title` (`256` bytes)  
+    - `description` (`1000`) 
+    - `startTime` (`64` bytes) 
+    - `endTime` (`64` bytes)
+  + Token tracking: 
+    - Total `$ANTI` in each poll's pool (`16` bytes)
+    - Total `$PRO` in each poll's pool (`16` bytes)
+  + `deposits` vector (`1024` bytes)
+  + Optional `equalisationResults` (`1024` bytes)
 
 ### Data Structs
 
-#### User Deposit
+#### `UserDeposit` 
 
 * Tracks individual user deposits
 * Records `$ANTI`/`$PRO` amounts, truth values
 * Includes `withdrawn` status
 
-#### Equalisation Result
+#### `EqualisationResult` 
 
 * Stores final poll outcomes
 * `$ANTI`/`$PRO` token return amounts
