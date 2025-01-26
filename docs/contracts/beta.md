@@ -8,7 +8,7 @@ import { Collider, Equaliser } from '@site/src/components/InteractiveScript';
 
 # Collider Smart Contract
 
-Author: [ `sshmatrix` ](https://sshmatrix.ss.codes/) | [ `Antitoken` ](https://stage.antitoken.pro) | `quant/acc` | `q/acc` 
+Author: [ `sshmatrix` ](https://sshmatrix.ss.codes/) | [ `github` ](https://github.com/antitokens/solana-collider) | `quant/acc` | `q/acc` 
 
 Ping: [dev@antitoken.pro](mailto:dev@antitoken.pro)
 
@@ -70,3 +70,61 @@ The <span style={{ color: 'red' }}>red</span>/<span style={{ color: 'limegreen' 
 
 <img src="/img/contracts/core.png" alt="Core" />
 <div style={{ textAlign: 'center' }}>Figure 2: Core</div>
+
+## Events
+
+The program emits events at key state transitions for off-chain indexing:
+
+### `PollCreatedEvent` 
+
+```typescript
+{
+    pollCount: u64,      // Unique identifier
+    address: Pubkey,     // Poll creator
+    title: String,       // Poll title
+    description: String, // Poll description
+    startTime: String,   // ISO timestamp
+    endTime: String,     // ISO timestamp
+    timestamp: i64       // Creation time
+}
+```
+
+### `DepositEvent` 
+
+```typescript
+{
+    pollCount: u64,         // Referenced poll
+    address: Pubkey,        // Depositor address
+    anti: u64,              // $ANTI deposit amount
+    pro: u64,               // $PRO deposit amount  
+    u: u64,                 // Truth value u
+    s: u64,                 // Truth value s
+    timestamp: i64          // Deposit time
+}
+```
+
+### `EqualisationEvent` 
+
+```typescript
+{
+    pollCount: u64,            // Referenced poll
+    truth: Vec<u64>,           // Final truth values
+    anti: u64,                 // Total $ANTI pooled
+    pro: u64,                  // Total $PRO pooled
+    timestamp: i64             // Equalisation time
+}
+```
+
+### `WithdrawEvent` 
+
+```typescript
+{
+    pollCount: u64,       // Referenced poll
+    address: Pubkey,      // Withdrawer address
+    anti: u64,            // $ANTI withdrawn
+    pro: u64,             // $PRO withdrawn
+    timestamp: i64        // Withdrawal time
+}
+```
+
+These events enable off-chain indexing for market analytics, user positions tracking, and historical data analysis.

@@ -7,7 +7,7 @@ description: Entangled Quantum-like Tokenomics for DeSci & Prediction Markets
 
 # Entangled Quantum-like Tokenomics for DeSci & Prediction Markets
 
-Author: [ `sshmatrix` ](https://sshmatrix.ss.codes/) | [ `Antitoken` ](https://stage.antitoken.pro) | `quant/acc` | `q/acc` 
+Author: [ `sshmatrix` ](https://sshmatrix.ss.codes/) | [ `Antitoken` ](https://antitoken.pro) | `quant/acc` | `q/acc` 
 
 Ping: [dev@antitoken.pro](mailto:dev@antitoken.pro)
 
