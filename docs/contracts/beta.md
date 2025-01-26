@@ -29,13 +29,13 @@ This program implements a decentralised prediction market using two competing to
 
 ## Program Structure
 
-### `StateAccount`  `(40 bytes)` 
+### State Account
 
 * Central authority account managing poll creation
 * Tracks total polls and program authority
 * Fixed size: `8` bytes for poll counter + `32` bytes for authority pubkey
 
-### `PollAccount`  `(3465 bytes)` 
+### Poll Account
 
 * Created per prediction market poll
 * Derived using PDA seeds: `['poll', pollCount]`
@@ -45,15 +45,15 @@ This program implements a decentralised prediction market using two competing to
   + `deposits` vector (`1024`)
   + Optional `equalisationResults` (`1024`)
 
-### Structs
+### Data Structs
 
-#### 1. `UserDeposit` 
+#### User Deposit
 
 * Tracks individual user deposits
 * Records `$ANTI`/`$PRO` amounts, truth values
 * Includes `withdrawn` status
 
-#### 2. `EqualisationResult` 
+#### Equalisation Result
 
 * Stores final poll outcomes
 * `$ANTI`/`$PRO` token return amounts
