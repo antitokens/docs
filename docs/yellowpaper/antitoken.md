@@ -6,7 +6,7 @@ description: Antitoken Prediction Framework for Continuous Outcomes
 ---
 import { Collider, Equaliser } from '@site/src/components/InteractiveScript'; 
 
-# Antitoken Collider: A Prediction Framework for Continuous Outcomes
+# Antitoken: A Prediction Framework for Continuous Outcomes
 
 Author: [ `sshmatrix` ](https://sshmatrix.ss.codes/) | [ `Antitoken` ](https://stage.antitoken.pro) | `quant/acc` | `q/acc` 
 
