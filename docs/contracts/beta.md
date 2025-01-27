@@ -20,7 +20,7 @@ This program implements a decentralised prediction market using two competing to
 
 * Program initialises with a state account tracking all created polls
 * Each poll is derived as a PDA from the poll counter
-* Polls manage paired `$ANTI`/`$PRO` token accounts for market positions
+* Polls manage paired `$ANTI` - `$PRO` token accounts for market positions
 * Users deposit tokens to take market positions
 * After poll end, smart contracts handle token settlement
 
@@ -38,31 +38,31 @@ This program implements a decentralised prediction market using two competing to
 ### Poll Account
 
 * Created per prediction market poll
-* Derived using PDA seeds: `['poll', pollCount]`
+* Derived using PDA seeds: `['poll', poll_index]`
 * Contains poll metadata, deposits, and results:
   + String fields: 
     - `title` (`256` bytes)  
     - `description` (`1000`) 
-    - `startTime` (`64` bytes) 
-    - `endTime` (`64` bytes)
+    - `start_time` (`64` bytes) 
+    - `end_time` (`64` bytes)
   + Token tracking: 
     - Total `$ANTI` in each prediction pool (`16` bytes)
     - Total `$PRO` in each prediction pool (`16` bytes)
   + `deposits` vector (`1024` bytes)
-  + Optional `equalisationResults` (`1024` bytes)
+  + Optional `equalisation_results` (`1024` bytes)
 
 ### Data Structures
 
 #### `UserDeposit` 
 
 * Tracks individual user deposits
-* Records `$ANTI`/`$PRO` amounts, truth values
+* Records `$ANTI` - `$PRO` amounts, truth values
 * Includes `withdrawn` status
 
 #### `EqualisationResult` 
 
 * Stores final poll outcomes
-* `$ANTI`/`$PRO` token return amounts
+* `$ANTI` - `$PRO` token return amounts
 * Truth value distributions
 * Settlement timestamp
 
@@ -79,12 +79,12 @@ The program emits events at key state transitions for off-chain indexing:
 
 ```typescript
 {
-    pollCount: u64,      // Unique identifier
+    poll_index: u64,     // Unique identifier
     address: Pubkey,     // Poll creator
     title: String,       // Poll title
     description: String, // Poll description
-    startTime: String,   // ISO timestamp
-    endTime: String,     // ISO timestamp
+    start_time: String,  // ISO timestamp
+    end_time: String,    // ISO timestamp
     timestamp: i64       // Creation time
 }
 ```
@@ -93,13 +93,13 @@ The program emits events at key state transitions for off-chain indexing:
 
 ```typescript
 {
-    pollCount: u64,         // Referenced poll
-    address: Pubkey,        // Depositor address
-    anti: u64,              // $ANTI deposit amount
-    pro: u64,               // $PRO deposit amount  
-    u: u64,                 // Truth value u
-    s: u64,                 // Truth value s
-    timestamp: i64          // Deposit time
+    poll_index: u64,      // Referenced poll
+    address: Pubkey,      // Depositor address
+    anti: u64,            // $ANTI deposit amount
+    pro: u64,             // $PRO deposit amount  
+    u: u64,               // Truth value u
+    s: u64,               // Truth value s
+    timestamp: i64        // Deposit time
 }
 ```
 
@@ -107,11 +107,11 @@ The program emits events at key state transitions for off-chain indexing:
 
 ```typescript
 {
-    pollCount: u64,            // Referenced poll
-    truth: Vec<u64>,           // Final truth values
-    anti: u64,                 // Total $ANTI pooled
-    pro: u64,                  // Total $PRO pooled
-    timestamp: i64             // Equalisation time
+    poll_index: u64,      // Referenced poll
+    truth: Vec<u64>,      // Final truth values
+    anti: u64,            // Total $ANTI pooled
+    pro: u64,             // Total $PRO pooled
+    timestamp: i64        // Equalisation time
 }
 ```
 
@@ -119,7 +119,7 @@ The program emits events at key state transitions for off-chain indexing:
 
 ```typescript
 {
-    pollCount: u64,       // Referenced poll
+    poll_index: u64,      // Referenced poll
     address: Pubkey,      // Withdrawer address
     anti: u64,            // $ANTI withdrawn
     pro: u64,             // $PRO withdrawn
